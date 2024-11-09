@@ -1,0 +1,95 @@
+package com.vladsch.flexmark.html;
+
+import com.vladsch.flexmark.util.data.DataHolder;
+import com.vladsch.flexmark.util.misc.CharPredicate;
+import com.vladsch.flexmark.util.misc.Utils;
+import java.util.HashMap;
+import java.util.regex.Pattern;
+
+/* loaded from: infinitode-2.jar:com/vladsch/flexmark/html/HtmlRendererOptions.class */
+public class HtmlRendererOptions {
+    public final String softBreak;
+    public final boolean isSoftBreakAllSpaces;
+    public final String hardBreak;
+    public final String strongEmphasisStyleHtmlOpen;
+    public final String strongEmphasisStyleHtmlClose;
+    public final String emphasisStyleHtmlOpen;
+    public final String emphasisStyleHtmlClose;
+    public final String codeStyleHtmlOpen;
+    public final String codeStyleHtmlClose;
+    public final boolean escapeHtmlBlocks;
+    public final boolean escapeHtmlCommentBlocks;
+    public final boolean escapeInlineHtml;
+    public final boolean escapeInlineHtmlComments;
+    public final boolean percentEncodeUrls;
+    public final int indentSize;
+    public final boolean suppressHtmlBlocks;
+    public final boolean suppressHtmlCommentBlocks;
+    public final boolean suppressInlineHtml;
+    public final boolean suppressInlineHtmlComments;
+    public final boolean doNotRenderLinksInDocument;
+    public final boolean renderHeaderId;
+    public final boolean generateHeaderIds;
+    public final String languageClassPrefix;
+    public final HashMap<String, String> languageClassMap;
+    public final String languageDelimiters;
+    public final CharPredicate languageDelimiterSet;
+    public final String noLanguageClass;
+    public final String sourcePositionAttribute;
+    public final String inlineCodeSpliceClass;
+    public final boolean sourcePositionParagraphLines;
+    public final boolean sourceWrapHtmlBlocks;
+    public final int formatFlags;
+    public final int maxTrailingBlankLines;
+    public final int maxBlankLines;
+    public final boolean htmlBlockOpenTagEol;
+    public final boolean htmlBlockCloseTagEol;
+    public final boolean unescapeHtmlEntities;
+    public final boolean noPTagsUseBr;
+    public final String autolinkWwwPrefix;
+    public final Pattern suppressedLinks;
+
+    public HtmlRendererOptions(DataHolder dataHolder) {
+        this.softBreak = HtmlRenderer.SOFT_BREAK.get(dataHolder);
+        this.isSoftBreakAllSpaces = Utils.isWhiteSpaceNoEOL(this.softBreak);
+        this.hardBreak = HtmlRenderer.HARD_BREAK.get(dataHolder);
+        this.strongEmphasisStyleHtmlOpen = HtmlRenderer.STRONG_EMPHASIS_STYLE_HTML_OPEN.get(dataHolder);
+        this.strongEmphasisStyleHtmlClose = HtmlRenderer.STRONG_EMPHASIS_STYLE_HTML_CLOSE.get(dataHolder);
+        this.emphasisStyleHtmlOpen = HtmlRenderer.EMPHASIS_STYLE_HTML_OPEN.get(dataHolder);
+        this.emphasisStyleHtmlClose = HtmlRenderer.EMPHASIS_STYLE_HTML_CLOSE.get(dataHolder);
+        this.codeStyleHtmlOpen = HtmlRenderer.CODE_STYLE_HTML_OPEN.get(dataHolder);
+        this.codeStyleHtmlClose = HtmlRenderer.CODE_STYLE_HTML_CLOSE.get(dataHolder);
+        this.escapeHtmlBlocks = HtmlRenderer.ESCAPE_HTML_BLOCKS.get(dataHolder).booleanValue();
+        this.escapeHtmlCommentBlocks = HtmlRenderer.ESCAPE_HTML_COMMENT_BLOCKS.get(dataHolder).booleanValue();
+        this.escapeInlineHtml = HtmlRenderer.ESCAPE_INLINE_HTML.get(dataHolder).booleanValue();
+        this.escapeInlineHtmlComments = HtmlRenderer.ESCAPE_INLINE_HTML_COMMENTS.get(dataHolder).booleanValue();
+        this.percentEncodeUrls = HtmlRenderer.PERCENT_ENCODE_URLS.get(dataHolder).booleanValue();
+        this.indentSize = HtmlRenderer.INDENT_SIZE.get(dataHolder).intValue();
+        this.suppressHtmlBlocks = HtmlRenderer.SUPPRESS_HTML_BLOCKS.get(dataHolder).booleanValue();
+        this.suppressHtmlCommentBlocks = HtmlRenderer.SUPPRESS_HTML_COMMENT_BLOCKS.get(dataHolder).booleanValue();
+        this.suppressInlineHtml = HtmlRenderer.SUPPRESS_INLINE_HTML.get(dataHolder).booleanValue();
+        this.suppressInlineHtmlComments = HtmlRenderer.SUPPRESS_INLINE_HTML_COMMENTS.get(dataHolder).booleanValue();
+        this.doNotRenderLinksInDocument = HtmlRenderer.DO_NOT_RENDER_LINKS.get(dataHolder).booleanValue();
+        this.renderHeaderId = HtmlRenderer.RENDER_HEADER_ID.get(dataHolder).booleanValue();
+        this.generateHeaderIds = HtmlRenderer.GENERATE_HEADER_ID.get(dataHolder).booleanValue();
+        this.languageClassPrefix = HtmlRenderer.FENCED_CODE_LANGUAGE_CLASS_PREFIX.get(dataHolder);
+        this.languageClassMap = HtmlRenderer.FENCED_CODE_LANGUAGE_CLASS_MAP.get(dataHolder);
+        this.languageDelimiters = HtmlRenderer.FENCED_CODE_LANGUAGE_DELIMITERS.get(dataHolder);
+        this.languageDelimiterSet = CharPredicate.anyOf(this.languageDelimiters);
+        this.noLanguageClass = HtmlRenderer.FENCED_CODE_NO_LANGUAGE_CLASS.get(dataHolder);
+        this.sourcePositionAttribute = HtmlRenderer.SOURCE_POSITION_ATTRIBUTE.get(dataHolder);
+        this.sourcePositionParagraphLines = !this.sourcePositionAttribute.isEmpty() && HtmlRenderer.SOURCE_POSITION_PARAGRAPH_LINES.get(dataHolder).booleanValue();
+        this.sourceWrapHtmlBlocks = !this.sourcePositionAttribute.isEmpty() && HtmlRenderer.SOURCE_WRAP_HTML_BLOCKS.get(dataHolder).booleanValue();
+        this.formatFlags = HtmlRenderer.FORMAT_FLAGS.get(dataHolder).intValue();
+        this.maxTrailingBlankLines = HtmlRenderer.MAX_TRAILING_BLANK_LINES.get(dataHolder).intValue();
+        this.maxBlankLines = HtmlRenderer.MAX_BLANK_LINES.get(dataHolder).intValue();
+        this.htmlBlockOpenTagEol = HtmlRenderer.HTML_BLOCK_OPEN_TAG_EOL.get(dataHolder).booleanValue();
+        this.htmlBlockCloseTagEol = HtmlRenderer.HTML_BLOCK_CLOSE_TAG_EOL.get(dataHolder).booleanValue();
+        this.unescapeHtmlEntities = HtmlRenderer.UNESCAPE_HTML_ENTITIES.get(dataHolder).booleanValue();
+        this.noPTagsUseBr = HtmlRenderer.NO_P_TAGS_USE_BR.get(dataHolder).booleanValue();
+        this.inlineCodeSpliceClass = HtmlRenderer.INLINE_CODE_SPLICE_CLASS.get(dataHolder);
+        this.autolinkWwwPrefix = HtmlRenderer.AUTOLINK_WWW_PREFIX.get(dataHolder);
+        String str = HtmlRenderer.SUPPRESSED_LINKS.get(dataHolder);
+        this.suppressedLinks = str.isEmpty() ? null : Pattern.compile(str);
+    }
+}
